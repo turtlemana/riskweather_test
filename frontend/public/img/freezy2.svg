@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="105" height="116" viewBox="0 0 105 116">
+  <defs>
+    <filter id="사각형_8758" x="0" y="0" width="105" height="116" filterUnits="userSpaceOnUse">
+      <feOffset dx="3" dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="7.5" result="blur"/>
+      <feFlood flood-opacity="0.102"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="그룹_260" data-name="그룹 260" transform="translate(-4843.5 -1423.5)">
+    <g id="그룹_199" data-name="그룹 199" transform="translate(3870 35)" opacity="0.85">
+      <g transform="matrix(1, 0, 0, 1, 973.5, 1388.5)" filter="url(#사각형_8758)">
+        <rect id="사각형_8758-2" data-name="사각형 8758" width="60" height="71" rx="8" transform="translate(19.5 19.5)" fill="#fff"/>
+      </g>
+      <path id="다각형_3" data-name="다각형 3" d="M5,0l5,9H0Z" transform="translate(1027 1488) rotate(180)" fill="#fff"/>
+    </g>
+    <g id="그룹_4" data-name="그룹 4" transform="translate(4046.935 1006.193)">
+      <line id="선_721" data-name="선 721" y2="44.241" transform="translate(846.185 450.807)" fill="none" stroke="#8e93c9" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5"/>
+      <line id="선_722" data-name="선 722" x2="3.171" y2="4.034" transform="translate(842.87 454.56)" fill="none" stroke="#8e93c9" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5"/>
+      <line id="선_723" data-name="선 723" x1="3.171" y2="4.034" transform="translate(846.328 454.56)" fill="none" stroke="#8e93c9" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5"/>
+      <line id="선_724" data-name="선 724" x2="3.171" y2="4.034" transform="translate(842.87 461.048)" fill="none" stroke="#8e93c9" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5"/>
+      <line id="선_725" data-name="선 725" x1="3.171" y2="4.034" transform="translate(846.328 461.048)" fill="none" stroke="#8e93c9" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5"/>
+      <line id="선_726" data-name="선 726" y1="4.034" x2="3.171" transform="translate(842.87 486.699)" fill="none" stroke="#8e93c9" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5"/>
+      <line id="선_727" data-name="선 727" x1="3.171" y1="4.034" transform="translate(846.328 486.699)" fill="none" stroke="#8e93c9" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5"/>
+      <line id="선_728" data-name="선 728" y1="4.034" x2="3.171" transform="translate(842.87 480.211)" fill="none" stroke="#8e93c9" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5"/>
+      <line id="선_729" data-name="선 729" x1="3.171" y1="4.034" transform="translate(846.328 480.211)" fill="none" stroke="#8e93c9" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5"/>
+      <line id="선_730" data-name="선 730" x2="31.282" y2="31.282" transform="translate(830.544 457.286)" fill="none" stroke="#8e93c9" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5"/>
+      <line id="선_731" data-name="선 731" x2="5.095" y2="0.611" transform="translate(830.853 462.283)" fill="none" stroke="#8e93c9" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5"/>
+      <line id="선_732" data-name="선 732" x2="0.611" y2="5.095" transform="translate(835.541 457.595)" fill="none" stroke="#8e93c9" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5"/>
+      <line id="선_733" data-name="선 733" x2="5.095" y2="0.611" transform="translate(835.442 466.871)" fill="none" stroke="#8e93c9" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5"/>
+      <line id="선_734" data-name="선 734" x2="0.611" y2="5.095" transform="translate(840.129 462.184)" fill="none" stroke="#8e93c9" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5"/>
+      <line id="선_735" data-name="선 735" x1="0.611" y1="5.095" transform="translate(855.822 482.766)" fill="none" stroke="#8e93c9" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5"/>
+      <line id="선_736" data-name="선 736" x1="5.095" y1="0.611" transform="translate(856.025 482.564)" fill="none" stroke="#8e93c9" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5"/>
+      <line id="선_737" data-name="선 737" x1="0.611" y1="5.095" transform="translate(851.234 478.178)" fill="none" stroke="#8e93c9" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5"/>
+      <line id="선_738" data-name="선 738" x1="5.095" y1="0.611" transform="translate(851.436 477.976)" fill="none" stroke="#8e93c9" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5"/>
+      <line id="선_739" data-name="선 739" x2="44.241" transform="translate(824.065 472.927)" fill="none" stroke="#8e93c9" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5"/>
+      <line id="선_740" data-name="선 740" y1="3.171" x2="4.034" transform="translate(827.818 473.07)" fill="none" stroke="#8e93c9" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5"/>
+      <line id="선_741" data-name="선 741" x2="4.034" y2="3.171" transform="translate(827.818 469.612)" fill="none" stroke="#8e93c9" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5"/>
+      <line id="선_742" data-name="선 742" y1="3.171" x2="4.034" transform="translate(834.307 473.07)" fill="none" stroke="#8e93c9" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5"/>
+      <line id="선_743" data-name="선 743" x2="4.034" y2="3.171" transform="translate(834.307 469.612)" fill="none" stroke="#8e93c9" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5"/>
+      <line id="선_744" data-name="선 744" x1="4.034" y1="3.171" transform="translate(859.958 473.07)" fill="none" stroke="#8e93c9" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5"/>
+      <line id="선_745" data-name="선 745" x1="4.034" y2="3.171" transform="translate(859.958 469.612)" fill="none" stroke="#8e93c9" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5"/>
+      <line id="선_746" data-name="선 746" x1="4.034" y1="3.171" transform="translate(853.469 473.07)" fill="none" stroke="#8e93c9" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5"/>
+      <line id="선_747" data-name="선 747" x1="4.034" y2="3.171" transform="translate(853.469 469.612)" fill="none" stroke="#8e93c9" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5"/>
+      <line id="선_748" data-name="선 748" y1="31.282" x2="31.282" transform="translate(830.544 457.286)" fill="none" stroke="#8e93c9" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5"/>
+      <line id="선_749" data-name="선 749" y1="5.095" x2="0.611" transform="translate(835.541 483.162)" fill="none" stroke="#8e93c9" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5"/>
+      <line id="선_750" data-name="선 750" y1="0.611" x2="5.095" transform="translate(830.853 482.959)" fill="none" stroke="#8e93c9" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5"/>
+      <line id="선_751" data-name="선 751" y1="5.095" x2="0.611" transform="translate(840.129 478.574)" fill="none" stroke="#8e93c9" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5"/>
+      <line id="선_752" data-name="선 752" y1="0.611" x2="5.095" transform="translate(835.442 478.372)" fill="none" stroke="#8e93c9" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5"/>
+      <line id="선_753" data-name="선 753" x1="5.095" y2="0.611" transform="translate(856.025 462.679)" fill="none" stroke="#8e93c9" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5"/>
+      <line id="선_754" data-name="선 754" x1="0.611" y2="5.095" transform="translate(855.822 457.991)" fill="none" stroke="#8e93c9" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5"/>
+      <line id="선_755" data-name="선 755" x1="5.095" y2="0.611" transform="translate(851.436 467.266)" fill="none" stroke="#8e93c9" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5"/>
+      <line id="선_756" data-name="선 756" x1="0.611" y2="5.095" transform="translate(851.234 462.58)" fill="none" stroke="#8e93c9" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5"/>
+    </g>
+  </g>
+</svg>

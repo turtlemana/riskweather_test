@@ -1,0 +1,333 @@
+@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer components {
+  .wrap {
+    @apply w-60vw m-auto;
+  }
+  .wrap2 {
+    @apply w-70vw m-auto;
+  }
+  .wrap3{
+    @apply w-80vw m-auto;
+  }
+  .wrap4{
+    @apply w-90vw m-auto;
+  }
+  .wrapper{
+    @apply h-500 relative
+  }
+  .graph-container{
+    @apply h-500 absolute w-full z-0
+  }
+  .second-graph{
+    @apply h-500 absolute w-full z-10
+  }
+  .btn-primary {
+    @apply bg-primary hover:bg-primary focus:ring-4 focus:outline-none focus:ring-blue-300 text-base font-medium text-white text-center w-auto h-10 m-0.5 px-4 rounded-lg;
+  }
+  .btn-primary-line {
+    @apply bg-white hover:bg-primary hover:text-white border border-primary focus:ring-4 focus:outline-none focus:ring-blue-300 text-base font-medium text-primary text-center w-auto h-10 m-0.5 px-4 rounded-lg;
+  }
+  .btn-white {
+    @apply bg-white hover:bg-gray-200 focus:outline-none text-base font-medium text-primary text-center w-auto h-10 m-0.5 px-4 rounded-lg;
+  }
+  .btn-gray {
+    @apply flex items-center bg-gray-200 hover:bg-gray-300 border border-gray-300 focus:outline-none text-base font-medium text-gray-500 text-center w-auto h-10 m-0.5 px-4 rounded-lg;
+  }
+  .btn-sm {
+    @apply text-sm h-8 px-2;
+  }
+  .btn-lg {
+    @apply text-lg h-14 px-7;
+  }
+  .btn-prev {
+    @apply before:content-['〈'] max-[768px]:text-3xl max-[768px]:-left-9 max-[540px]:-left-6 max-[450px]:-left-6 text-gray-900 text-4xl opacity-30 hover:opacity-40 p-2.5 py-6 absolute -left-12 top-1/2 -translate-y-1/2;
+  }
+  .btn-next {
+    @apply before:content-['〉'] max-[768px]:text-3xl max-[768px]:-right-9 max-[540px]:-right-6 max-[450px]:-right-4 text-gray-900 text-4xl opacity-30 hover:opacity-40 p-2.5 py-6 absolute -right-12 top-1/2 -translate-y-1/2;
+  }
+  .form-label {
+    @apply block mb-2 mr-3 text-6;
+  }
+  .form-input {
+    @apply bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:outline-none focus:ring-1 focus:ring-gray-300 block h-10 px-2.5;
+  }
+  .form-input2 {
+    @apply bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:outline-none focus:ring-1 focus:ring-gray-300  h-10 px-2.5;
+  }
+  .container {
+    @apply bg-white py-5 px-5 max-[450px]:px-5 rounded-lg shadow-md shadow-gray-200 border border-gray-100;
+  }
+  .container-line {
+    @apply bg-white p-5 rounded-lg shadow-none border border-gray-200;
+  }
+  .map-container-line {
+    @apply bg-white p-1 rounded-lg shadow-none border border-gray-200;
+  }
+  .chart-container-line {
+    @apply bg-white pt-5 p-0.5 rounded-lg shadow-none border border-gray-200 max-[540px]:text-xs;
+  }
+  .container-gray {
+    @apply h-80 bg-gray-100 rounded-lg shadow-md;
+  }
+  .container-light-gray {
+    @apply h-auto bg-gray-50 rounded-lg border border-gray-200 p-5 pb-8;
+  }
+  .list-bullet {
+    @apply bg-primary text-white rounded-full inline-flex items-center justify-center w-5 h-5 mr-2 before:content-['✓'];
+  }
+  .text-1 {
+    @apply text-3xl text-gray-700 font-normal leading-snug tracking-normal mb-8;
+  }
+  .text-2 {
+    @apply text-2xl text-gray-700 font-normal leading-relaxed tracking-normal mb-5;
+  }
+  .text-3 {
+    @apply text-1.5xl text-gray-700 font-normal leading-relaxed tracking-normal;
+  }
+  .text-4 {
+    @apply text-xl text-gray-700 font-normal leading-relaxed tracking-normal mb-1;
+  }
+  .text-5 {
+    @apply text-lg text-gray-600 font-normal leading-relaxed tracking-normal mb-2;
+  }
+  .text-6 {
+    @apply text-base text-gray-600 font-normal leading-relaxed;
+  }
+  .text-card {
+    @apply text-[18px] text-gray-700 font-normal leading-relaxed tracking-normal mb-1;
+  }
+  .text-7 {
+    @apply text-sm text-gray-500 font-light leading-relaxed;
+  }
+  .text-8 {
+    @apply text-sm text-green-500 font-normal leading-relaxed;
+  }
+  .text-9 {
+    @apply text-sm text-red-500 font-normal leading-relaxed;
+  }
+  .text_base_green {
+    @apply text-base text-green-500 font-normal leading-relaxed;
+  }
+  .text_base_red {
+    @apply text-base text-red-500 font-normal leading-relaxed;
+  }
+  .text-blue {
+    @apply text-base text-blue-600 font-normal leading-relaxed;
+  }
+
+  .text-red {
+    @apply text-red-600 font-normal;
+  }
+  .text-green {
+    @apply text-emerald-400 font-normal;
+  }
+  .border-g-green-1 {
+    @apply border-b-2 border-b-green-100 !important;
+  }
+  .border-g-green-2 {
+    @apply border-b-2 border-b-green-200 !important;
+  }
+  .border-g-green-3 {
+    @apply border-b-2 border-b-green-300 !important;
+  }
+  .border-g-green-4 {
+    @apply border-b-2 border-b-green-400 !important;
+  }
+  .border-g-red-1 {
+    @apply border-b-2 border-b-red-50 !important;
+  }
+  .border-g-red-2 {
+    @apply border-b-2 border-b-red-100 !important;
+  }
+  .border-g-red-3 {
+    @apply border-b-2 border-b-red-200 !important;
+  }
+  .border-g-red-4 {
+    @apply border-b-2 border-b-red-300 !important;
+  }
+  .border-g-red-5 {
+    @apply border-b-2 border-b-red-400 !important;
+  }
+  .border-g-red-6 {
+    @apply border-b-2 border-b-red-500 !important;
+  }
+  .border-g-red-7 {
+    @apply border-b-2 border-b-red-600 !important;
+  }
+  .border-g-red-8 {
+    @apply border-b-2 border-b-red-700 !important;
+  }
+  .border-g-red-9 {
+    @apply border-b-2 border-b-red-800 !important;
+  }
+  .border-g-red-10 {
+    @apply border-b-2 border-b-red-900 !important;
+  }
+  .bg-search {
+    @apply bg-[url('/img/icon_search.png')];
+  }
+  .bg-list {
+    @apply bg-[url('/img/icon_list_alt.png')];
+  }
+  .list-item {
+    @apply p-3 py-0.5 cursor-pointer border-b-2 border-transparent;
+  }
+  .active-list {
+    @apply border-b-2 border-indigo-600 text-primary font-medium;
+  }
+  .active-list2 {
+    @apply border border-indigo-600 text-primary font-medium rounded-lg;
+  }
+  .flex-center {
+    @apply flex items-center justify-center;
+  }
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: 'Spoqa Han Sans Neo', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+a, .link {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+li {
+  list-style: none;
+}
+
+/* Chrome, Safari, Edge, Opera */
+/* input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+} */
+
+/* Firefox */
+/* input[type=number] {
+  -moz-appearance: textfield;
+} */
+
+* {
+  box-sizing: border-box;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: normal;
+  
+  }
+  /* body {
+    color: black;
+    background: white;
+  } */
+}
+.Panel {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Table */
+.table li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1 1 auto;
+  width: 100%;
+  border: 1px solid rgb(243 244 246);
+}
+.table li *:not(:last-child) {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 0.4rem;
+  white-space: nowrap;
+  border-bottom: 1px solid rgb(243 244 246); 
+}
+
+/* input margin */
+/* .form-input+.form-input {
+  margin-left: 0.5rem;
+} */
+
+/* slim scroll custom */
+.slim-scroll::-webkit-scrollbar {
+  width: 4px;
+}
+.slim-scroll::-webkit-scrollbar-thumb {
+  background-color: #e4e4e4;
+  border-radius: 10px;
+  background-clip: padding-box;
+  border: 1px solid transparent;
+}
+.slim-scroll::-webkit-scrollbar-track {
+  background-color: rgb(247, 247, 247);
+  border-radius: 10px;
+}
+
+/* loading animation */
+.loading {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  border: 3px solid #eee;
+  border-radius: 50%;
+  border-top-color: #666;
+  animation: spin 1s ease-in-out infinite;
+  -webkit-animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to { -webkit-transform: rotate(360deg); }
+}
+@-webkit-keyframes spin {
+  to { -webkit-transform: rotate(360deg); }
+}
+
+.button {
+  all: unset;
+  padding: 1rem 0.5rem; 
+  color: burlywood;
+  border-radius: 10px;
+  border: 1px solid burlywood;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 9999;
+}
+.button:hover {
+  background-color: burlywood;
+  color: #fff;
+}
+.sliderContainer {
+  display: flex; 
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.right-0 {
+  right: 0 !important;
+}
+
+.recharts-responsive-container {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.PhoneInputInput {
+  background: transparent;
+  width: 100%;
+  height: 100%;
+}
+.PhoneInputInput:focus {
+  outline: none;
+}

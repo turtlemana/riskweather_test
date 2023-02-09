@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="105" height="116" viewBox="0 0 105 116">
+  <defs>
+    <filter id="사각형_8758" x="0" y="0" width="105" height="116" filterUnits="userSpaceOnUse">
+      <feOffset dx="3" dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="7.5" result="blur"/>
+      <feFlood flood-opacity="0.102"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="그룹_263" data-name="그룹 263" transform="translate(-5065.5 -1423.5)">
+    <g id="그룹_202" data-name="그룹 202" transform="translate(4092 35)" opacity="0.85">
+      <g transform="matrix(1, 0, 0, 1, 973.5, 1388.5)" filter="url(#사각형_8758)">
+        <rect id="사각형_8758-2" data-name="사각형 8758" width="60" height="71" rx="8" transform="translate(19.5 19.5)" fill="#fff"/>
+      </g>
+      <path id="다각형_3" data-name="다각형 3" d="M5,0l5,9H0Z" transform="translate(1027 1488) rotate(180)" fill="#fff"/>
+    </g>
+    <g id="그룹_9" data-name="그룹 9" transform="translate(4576.259 1014.2)">
+      <path id="패스_689" data-name="패스 689" d="M200.015,18.224s-5.9-.531-5.9,4.707,5.9,5.237,5.9,5.237H232.7s5.961-.472,5.961-7.473-6.944-6.765-6.944-6.765-1.769-8.885-9.89-8.885A9.831,9.831,0,0,0,212,12.223c-4.018-.877-7.987.012-10.217,2.412a7.092,7.092,0,0,0-1.769,3.589" transform="translate(322.626 445.762)" fill="#f4f3f4" stroke="#707070" stroke-width="0.4"/>
+      <path id="패스_690" data-name="패스 690" d="M200.015,18.224s-5.9-.531-5.9,4.707,5.9,5.237,5.9,5.237H232.7s5.961-.472,5.961-7.473-6.944-6.765-6.944-6.765-1.769-8.885-9.89-8.885A9.831,9.831,0,0,0,212,12.223c-4.018-.877-7.987.012-10.217,2.412a7.092,7.092,0,0,0-1.768,3.589Z" transform="translate(322.626 445.762)" fill="none" stroke="#6f6f6e" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4"/>
+      <path id="패스_691" data-name="패스 691" d="M209.005,12.423a14.133,14.133,0,0,1-1.042,3.987c-.693,1.622-1.957,3.766-1.254,5.06a1.986,1.986,0,0,0,.863.847,3.3,3.3,0,0,0,2.907-.012c2.167-1.151,1.4-5.115-1.474-9.883" transform="translate(339.442 455.782)" fill="#8e93c9" stroke="#707070" stroke-width="0.4"/>
+      <path id="패스_692" data-name="패스 692" d="M209.005,12.423a14.133,14.133,0,0,1-1.042,3.987c-.693,1.622-1.957,3.766-1.254,5.06a1.986,1.986,0,0,0,.863.847,3.3,3.3,0,0,0,2.907-.012C212.646,21.155,211.882,17.191,209.005,12.423Z" transform="translate(339.442 455.782)" fill="none" stroke="#6f6f6e" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="77" height="77" viewBox="0 0 77 77">
+  <defs>
+    <radialGradient id="radial-gradient" cx="0.5" cy="0.5" r="0.5" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#2c5edd"/>
+      <stop offset="1" stop-color="#aec1ee"/>
+    </radialGradient>
+    <filter id="타원_105" x="0" y="0" width="77" height="77" filterUnits="userSpaceOnUse">
+      <feOffset input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="10" result="blur"/>
+      <feFlood flood-color="#2c5edd" flood-opacity="0.8"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#타원_105)">
+    <circle id="타원_105-2" data-name="타원 105" cx="8.5" cy="8.5" r="8.5" transform="translate(30 30)" fill="url(#radial-gradient)"/>
+  </g>
+</svg>
