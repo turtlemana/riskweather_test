@@ -1,7 +1,6 @@
 import React,{useState,useEffect,useCallback,useMemo} from "react"
 import { ComposableMap, Geographies, Geography,Annotation,ZoomableGroup,Marker } from "react-simple-maps"
 
-import ReactTooltip from 'react-tooltip';
 
 import SnowStorm from '/public/img/snowstorm2.svg'
 import Dry from '/public/img/dry2.svg'
@@ -359,7 +358,7 @@ const leaveHandler=()=>{
         </ComposableMap>
 
       {/* Tooltip */}
-      {isMounted && content && locArr!=stockLocArr &&
+      {/* {isMounted && content && locArr!=stockLocArr &&
       <ReactTooltip effect="float" place="right" borderColor="green" background="white" type="light">
         <div className={`w-64 my-2 text-6`}>
           <ul>
@@ -431,7 +430,7 @@ const leaveHandler=()=>{
         </div>
       </ReactTooltip>
       
-      }
+      } */}
 
       </div>
     </div>
