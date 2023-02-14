@@ -1,7 +1,6 @@
 import React,{useState,useEffect,useCallback,useMemo} from "react"
 import { ComposableMap, Geographies, Geography,Annotation,ZoomableGroup,Marker } from "react-simple-maps"
 
-
 import SnowStorm from '/public/img/snowstorm2.svg'
 import Dry from '/public/img/dry2.svg'
 import HeavySnow from '/public/img/heavy_snow2.svg'

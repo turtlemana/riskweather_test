@@ -7,6 +7,9 @@ import {
   Marker,
   ZoomableGroup
 } from "react-simple-maps";
+import {useRouter} from "next/router";
+import {AiOutlineGlobal} from 'react-icons/ai'
+
 import ReactTooltip from 'react-tooltip';
 import Ad from '/public/img/country/ad.svg'
 import Vercel from '/public/vercel.svg'
@@ -55,21 +58,22 @@ const mapWidth = 800;
 const mapHeight = 600;
 
 const markers=[
-    {markerOffset: 25, name: "Brasilia", country:"Brazil", coordinates: [-47.8825, -15.7942],ticker:"^BVSP" },
-    {markerOffset: 25, name: "New Delhi", country:"India", coordinates: [77.2, 28.6], ticker:"^BSESN" },
-    {markerOffset: 25, name: "Beijing", country:"China",coordinates: [116.383333, 39.9166666666666],ticker:"399001.SZ" },
-    {markerOffset: 25, name: "Paris", country:"France",coordinates: [2.333333, 48.8666666666666],ticker:"^FCHI" },
-    {markerOffset: 25, name: "Washington", country:"United States",coordinates: [-77, 38.8833], ticker:"^IXIC" },
-   //  {markerOffset: 25, name: "Hanoi", country:"Vietnam",coordinates: [105.85, 21.03333] },
-    {markerOffset: 25, name: "Seoul", country:"Korea",coordinates: [126.9833, 37.55], ticker:"^KS11"},
-    {markerOffset: 25, name: "Tokyo", country:"Japan",coordinates: [139.75, 35.6833],ticker:"^N225" },
-    {markerOffset: 25, name: "Berlin", country:"Germany",coordinates: [13.4, 52.51667],ticker:"^GDAXI" },
-   //  {markerOffset: 25, name: "Amsterdam", country:"Netherland",coordinates: [4.916667, 52.35] },
-   //  {markerOffset: 25, name: "Taipei", country:"Taiwan",coordinates: [121.5167, 25.03333] },
-    {markerOffset: 25, name: "London", country:"United Kingdom",coordinates: [-0.083333, 51.5],ticker:"^FTSE" },
+    {markerOffset: 25, name: "Brasilia", country:"Brazil", coordinates: [-47.8825, -15.7942],ticker:"^BVSP",countryCode:"br"},
+    {markerOffset: 25, name: "New Delhi", country:"India", coordinates: [77.2, 28.6], ticker:"^BSESN",countryCode:"in" },
+    {markerOffset: 25, name: "Beijing", country:"China",coordinates: [116.383333, 39.9166666666666],ticker:"399001.SZ" ,countryCode:"cn"},
+    {markerOffset: 25, name: "Paris", country:"France",coordinates: [2.333333, 48.8666666666666],ticker:"^FCHI",countryCode:"fr" },
+    {markerOffset: 25, name: "Washington", country:"United States",coordinates: [-77, 38.8833], ticker:"^IXIC" ,countryCode:"us" },
+   //  {markerOffset: 25, name: "Hanoi", country:"Vietnam",coordinates: [105.85, 21.03333],countryCode:"VN" },
+    {markerOffset: 25, name: "Seoul", country:"Korea",coordinates: [126.9833, 37.55], ticker:"^KS11" ,countryCode:"kr"},
+    {markerOffset: 25, name: "Tokyo", country:"Japan",coordinates: [139.75, 35.6833],ticker:"^N225" ,countryCode:"jp"},
+    {markerOffset: 25, name: "Berlin", country:"Germany",coordinates: [13.4, 52.51667],ticker:"^GDAXI" ,countryCode:"de"},
+   //  {markerOffset: 25, name: "Amsterdam", country:"Netherland",coordinates: [4.916667, 52.35] ,countryCode:"NL"},
+   //  {markerOffset: 25, name: "Taipei", country:"Taiwan",coordinates: [121.5167, 25.03333] ,countryCode:"TW"},
+    {markerOffset: 25, name: "London", country:"United Kingdom",coordinates: [-0.083333, 51.5],ticker:"^FTSE" ,countryCode:"gb"},
 ]
 
 const RiskMap=({allAssets})=>{
+   const router=useRouter()
     const [isMounted,setIsMounted] = useState(false);
     const [position, setPosition] = useState({ coordinates: [0, 0], zoom: 1 ,color:"#EAEAEC"});
     const [mapMarkers, setMapMarkers]=useState(markers)
@@ -83,38 +87,47 @@ const RiskMap=({allAssets})=>{
       for (let i=0; i<filteredIndexData.length; i++){
          if(filteredIndexData[i].ticker=="^BSESN"){
             filteredIndexData[i].country="India"
+            filteredIndexData[i].countryCode="in"
             filteredIndexData[i].onClick={zoomIndia}
          }
          else if(filteredIndexData[i].ticker=="^BVSP"){
             filteredIndexData[i].country="Brazil"
+            filteredIndexData[i].countryCode="br"
             filteredIndexData[i].onClick={zoomBrazil}
          }
          else if(filteredIndexData[i].ticker=="^FCHI"){
             filteredIndexData[i].country="France"
+            filteredIndexData[i].countryCode="fr"
             filteredIndexData[i].onClick={zoomFrance}
          }
          else if(filteredIndexData[i].ticker=="^FTSE"){
             filteredIndexData[i].country="United Kingdom"
+            filteredIndexData[i].countryCode="gb"
             filteredIndexData[i].onClick={zoomUK}
          }
          else if(filteredIndexData[i].ticker=="^GDAXI"){
             filteredIndexData[i].country="Germany"
+            filteredIndexData[i].countryCode="de"
             filteredIndexData[i].onClick={zoomGermany}
          }
          else if(filteredIndexData[i].ticker=="399001.SZ"){
             filteredIndexData[i].country="China"
+            filteredIndexData[i].countryCode="cn"
             filteredIndexData[i].onClick={zoomChina}
          }
          else if(filteredIndexData[i].ticker=="^IXIC"){
             filteredIndexData[i].country="United States"
+            filteredIndexData[i].countryCode="us"
             filteredIndexData[i].onClick={zoomUS}
          }
          else if(filteredIndexData[i].ticker=="^KS11"){
             filteredIndexData[i].country="Korea"
+            filteredIndexData[i].countryCode="kr"
             filteredIndexData[i].onClick={zoomKorea}
          }
          else if(filteredIndexData[i].ticker=="^N225"){
             filteredIndexData[i].country="Japan"
+            filteredIndexData[i].countryCode="jp"
             filteredIndexData[i].onClick={zoomJapan}
          } 
       }
@@ -128,7 +141,9 @@ useEffect(()=>{
         for (let j=0; j<filteredIndexData.length; j++){
         if(markers[i].ticker == filteredIndexData[j].ticker){
           markers[i].weather=filteredIndexData[j].weather
+          markers[i].assetName=filteredIndexData[j].name
           markers[i].risk=(filteredIndexData[j].tailriskchg)
+          markers[i].onClick=(filteredIndexData[j].onClick)
         }}
       }
 },[filteredIndexData])
@@ -163,6 +178,13 @@ useEffect(()=>{
 console.log(stockList)
 console.log(filteredStockData)
 console.log(mapMarkers)
+function handleMoveEnd(position) {
+   setPosition(position);
+ }
+
+ const handleFilter = ({ constructor: { name } }) => {
+   return name !== "MouseEvent";
+ };
     function zoomOut(){
         setPosition((pos)=>({...pos, zoom:1, coordinates:[0,0], name:""}))
         setMapMarkers(markers)
@@ -243,91 +265,26 @@ console.log(mapMarkers)
    <div className="h-[1800px] px-3 py-4 overflow-y-auto container dark:bg-gray-800 text-lg font-bold text-center">
       <ul className="space-y-2 ">
          <li>
-            <div onClick={zoomOut} className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
-               <svg aria-hidden="true" className="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path><path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path></svg>
+            <div onClick={zoomOut} className="cursor-pointer flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+               <AiOutlineGlobal className="w-6 h-6"></AiOutlineGlobal>
+               {/* <svg aria-hidden="true" className="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path><path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path></svg> */}
                <span className="ml-3 text-xl font-bold flex-1">World Risk weather</span>
             </div>
          </li>
        {!stockList ?  availableIndex?.map((index)=> <li key={index.ticker}>
-            <div onClick={index.onClick? Object.values(index?.onClick)[0] : ""} className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
-               
-               <svg aria-hidden="true" className="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path><path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path></svg>
+            <div onClick={index.onClick? Object.values(index?.onClick)[0] : ""} className="cursor-pointer flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+            <Image width="28px" height="28px" src={`/img/country/${index.countryCode}.svg`} alt={`${index.countryCode}`}></Image>
+
+               {/* <svg aria-hidden="true" className="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path><path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path></svg> */}
                <span className="flex-1 ml-3">{index.country}</span>
                <span className="flex-1 ml-3">{index.tailriskchg}</span>
                <Image width="28px" height="28px" src={`/img/${index.weather}.svg`} alt={`${index.weather}`}></Image>
             </div>
          </li>)
-      //  <div>
-      //    <li>
-      //       <div onClick={zoomUS} className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
-      //          <svg aria-hidden="true" className="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path><path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path></svg>
-      //          <span className="flex-1 ml-3">United States</span>
-      //       </div>
-      //    </li>
-      //    <li>
-      //       <div onClick={zoomJapan} className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
-      //          <svg aria-hidden="true" className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg>
-      //          <span className="flex-1 ml-3 whitespace-nowrap">Japan</span>
-      //       </div>
-      //    </li>
-      //    <li>
-      //       <div onClick={zoomKorea} className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
-      //          <svg aria-hidden="true" className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M8.707 7.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l2-2a1 1 0 00-1.414-1.414L11 7.586V3a1 1 0 10-2 0v4.586l-.293-.293z"></path><path d="M3 5a2 2 0 012-2h1a1 1 0 010 2H5v7h2l1 2h4l1-2h2V5h-1a1 1 0 110-2h1a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V5z"></path></svg>
-      //          <span className="flex-1 ml-3 whitespace-nowrap">South Korea</span>
-      //       </div>
-      //    </li>
-      //    <li>
-      //       <div onClick={zoomChina} className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
-      //          <svg aria-hidden="true" className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd"></path></svg>
-      //          <span className="flex-1 ml-3 whitespace-nowrap">China</span>
-      //       </div>
-      //    </li>
-      //    <li>
-      //       <div onClick={zoomBrazil} className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
-      //          <svg aria-hidden="true" className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z" clipRule="evenodd"></path></svg>
-      //          <span className="flex-1 ml-3 whitespace-nowrap">Brazil</span>
-      //       </div>
-      //    </li>
-      //    <li>
-      //       <div onClick={zoomGermany} className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
-      //          <svg aria-hidden="true" className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z" clipRule="evenodd"></path></svg>
-      //          <span className="flex-1 ml-3 whitespace-nowrap">Germany</span>
-      //       </div>
-      //    </li>
-      //    <li>
-      //       <div onClick={zoomFrance} className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
-      //          <svg aria-hidden="true" className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z" clipRule="evenodd"></path></svg>
-      //          <span className="flex-1 ml-3 whitespace-nowrap">France</span>
-      //       </div>
-      //    </li>
-      //    <li>
-      //       <div onClick={zoomNetherland} className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
-      //          <svg aria-hidden="true" className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z" clipRule="evenodd"></path></svg>
-      //          <span className="flex-1 ml-3 whitespace-nowrap">Netherland</span>
-      //       </div>
-      //    </li>
-      //    <li>
-      //       <div onClick={zoomIndia} className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
-      //          <svg aria-hidden="true" className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M5 4a3 3 0 00-3 3v6a3 3 0 003 3h10a3 3 0 003-3V7a3 3 0 00-3-3H5zm-1 9v-1h5v2H5a1 1 0 01-1-1zm7 1h4a1 1 0 001-1v-1h-5v2zm0-4h5V8h-5v2zM9 8H4v2h5V8z" clipRule="evenodd"></path></svg>
-      //          <span className="flex-1 ml-3 whitespace-nowrap">India</span>
-      //       </div>
-      //    </li>
-      //    <li>
-      //       <div onClick={zoomTaiwan} className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
-      //          <svg aria-hidden="true" className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M5 4a3 3 0 00-3 3v6a3 3 0 003 3h10a3 3 0 003-3V7a3 3 0 00-3-3H5zm-1 9v-1h5v2H5a1 1 0 01-1-1zm7 1h4a1 1 0 001-1v-1h-5v2zm0-4h5V8h-5v2zM9 8H4v2h5V8z" clipRule="evenodd"></path></svg>
-      //          <span className="flex-1 ml-3 whitespace-nowrap">Taiwan</span>
-      //       </div>
-      //    </li>
-      //    <li>
-      //       <div onClick={zoomVietnam} className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
-      //          <svg aria-hidden="true" className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M5 4a3 3 0 00-3 3v6a3 3 0 003 3h10a3 3 0 003-3V7a3 3 0 00-3-3H5zm-1 9v-1h5v2H5a1 1 0 01-1-1zm7 1h4a1 1 0 001-1v-1h-5v2zm0-4h5V8h-5v2zM9 8H4v2h5V8z" clipRule="evenodd"></path></svg>
-      //          <span className="flex-1 ml-3 whitespace-nowrap">Vietnam</span>
-      //       </div>
-      //    </li>
-      // </div>
+     
         : stockList.map((stock)=>(
          <li key={stock.ticker} >
-         <div onClick={()=>{setMapMarkers((prev)=>[{...prev[0],name:stock.name, ticker:stock.ticker, weather:stock.weather, risk:stock.tailriskchg}])}} className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+         <div onClick={()=>{setMapMarkers((prev)=>[{...prev[0],assetName:stock.name, ticker:stock.ticker, weather:stock.weather, risk:stock.tailriskchg}])}} className="cursor-pointer flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
             <Image width="28px" height="28px" src={`/img/${stock.ticker}.png`} alt={`${stock.coinIcon}`}></Image>
             <span className="flex-1 ml-3 whitespace-nowrap">{stock.name}</span>
             <span className="flex-1 ml-3 whitespace-nowrap">{stock.tailriskchg}</span>
@@ -341,7 +298,8 @@ console.log(mapMarkers)
 <div className={`tab-content map-container-line  overflow-auto w-full h-full bg-[#AFD5F0]`}>
 
         <ComposableMap className={`w-full h-full m-auto`} projectionConfig={{}} projection={"geoMercator"}  >
-            <ZoomableGroup center={position.coordinates} zoom={position.zoom}>
+            <ZoomableGroup center={position.coordinates} zoom={position.zoom}        onMoveEnd={handleMoveEnd}
+          filterZoomEvent={handleFilter}>
     <Geographies geography={geoUrl}>
         {({ geographies }) =>
           geographies.map((geo) => {
@@ -369,27 +327,24 @@ console.log(mapMarkers)
         }
       </Geographies>
 
-      {mapMarkers.map(({ name, coordinates,country, ticker,markerOffset,risk,weather }) => (
+      {mapMarkers.map(({ name, coordinates,country,onClick, assetName,countryCode, ticker,markerOffset,risk,weather }) => (
 
         (<Marker key={coordinates} coordinates={coordinates}  >
          {mapMarkers.length>=2  
-         ? <svg viewBox="130 -0 800 800" >
-            <foreignObject  width="200" height="150">
-              <div className={`w-full container-line flex text-[5px] opacity-80 justify-between`}>
-               <p className={`text-[5px]`}>{name}</p>
-               <p className={`ml-5`}>{risk}</p>
+         ? <svg viewBox="130 0 800 800" >
+            <foreignObject x="0" y="0"  width="150" height="80">
+              <div onClick={onClick? Object.values(onClick)[0] : ""} className={`cursor-pointer w-full border items-center bg-white border-gray-100 p-3 rounded-lg flex text-[5px] opacity-80 justify-center`}>
+              <Image  width="20px" height="25px" src={`/img/country/${countryCode}.svg`} alt={`${countryCode}`}></Image>
+               <p className={`ml-5 text-[5px]`}>{name}</p>
                <div className={`ml-5`}>
-              <Image  width="28px" height="28px" src={`/img/${weather}.svg`} alt={`${weather}`}></Image>
+              <Image  width="20px" height="20px" src={`/img/${weather}.svg`} alt={`${weather}`}></Image>
               </div>
-               </div> 
-               {/* <WeatherCard key={ticker} name={name} weather={weather} ticker={ticker} coinIcon={ticker} figure={risk}></WeatherCard> */}
-         
+               </div>          
             </foreignObject>
          </svg>
          : 
-         <svg viewBox="130 -0 800 800">
+         <svg viewBox="450 -0 2800 2800">
          <foreignObject  width="250" height="500">
-          <div className={`w-full container-line flex text-[5px] opacity-80 justify-between`}>
           <div className={`container-gray flex flex-col link`} onClick={()=>{router.push({pathname:`/detail/`, query:{asset:ticker}})}}>
         <div className={`icon-img flex flex-1 justify-center`}>
           <Image width="120px" height="120px" src={`/img/${weather}.svg`} alt={`${weather}`}></Image>
@@ -400,8 +355,8 @@ console.log(mapMarkers)
               <Image width="48px" height="48px" src={`/img/${ticker}.png`} alt={`${ticker}`}></Image>
             </div>
             <div className={`ml-3`}>
-              {name.length<13 ? <h4 className={`text-card max-[1280px]:text-card`}>{name}</h4>
-              :  <p className={`text-card max-[1280px]:text-card  max-[1835px]:text-sm`}>{name}</p>}
+              {name.length<13 ? <h4 className={`text-card max-[1280px]:text-card`}>{assetName}</h4>
+              :  <p className={`text-card max-[1280px]:text-card  max-[1835px]:text-sm`}>{assetName}</p>}
               <p className={`text-7`}>{ticker}</p>
             </div>
           </div>
@@ -410,7 +365,6 @@ console.log(mapMarkers)
           </div>
         </div>
     </div>
-           </div> 
      
         </foreignObject>
         </svg>
