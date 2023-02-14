@@ -60,12 +60,12 @@ const markers=[
     {markerOffset: 25, name: "Beijing", country:"China",coordinates: [116.383333, 39.9166666666666],ticker:"399001.SZ" },
     {markerOffset: 25, name: "Paris", country:"France",coordinates: [2.333333, 48.8666666666666],ticker:"^FCHI" },
     {markerOffset: 25, name: "Washington", country:"United States",coordinates: [-77, 38.8833], ticker:"^IXIC" },
-    {markerOffset: 25, name: "Hanoi", country:"Vietnam",coordinates: [105.85, 21.03333] },
+   //  {markerOffset: 25, name: "Hanoi", country:"Vietnam",coordinates: [105.85, 21.03333] },
     {markerOffset: 25, name: "Seoul", country:"Korea",coordinates: [126.9833, 37.55], ticker:"^KS11"},
     {markerOffset: 25, name: "Tokyo", country:"Japan",coordinates: [139.75, 35.6833],ticker:"^N225" },
     {markerOffset: 25, name: "Berlin", country:"Germany",coordinates: [13.4, 52.51667],ticker:"^GDAXI" },
-    {markerOffset: 25, name: "Amsterdam", country:"Netherland",coordinates: [4.916667, 52.35] },
-    {markerOffset: 25, name: "Taipei", country:"Taiwan",coordinates: [121.5167, 25.03333] },
+   //  {markerOffset: 25, name: "Amsterdam", country:"Netherland",coordinates: [4.916667, 52.35] },
+   //  {markerOffset: 25, name: "Taipei", country:"Taiwan",coordinates: [121.5167, 25.03333] },
     {markerOffset: 25, name: "London", country:"United Kingdom",coordinates: [-0.083333, 51.5],ticker:"^FTSE" },
 ]
 
@@ -231,7 +231,7 @@ console.log(mapMarkers)
 
     return (
       
-        <div data-tip="" className={'flex justify-center w-[2400px] h-[1800px]'}>
+        <div data-tip="" className={'flex justify-center w-[3400px] h-[1800px]'}>
 <button data-drawer-target="default-sidebar" data-drawer-toggle="default-sidebar" aria-controls="default-sidebar" type="button" className="inline-flex items-center p-2 mt-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
    <span className="sr-only">Open sidebar</span>
    <svg className="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -327,7 +327,7 @@ console.log(mapMarkers)
       // </div>
         : stockList.map((stock)=>(
          <li key={stock.ticker} >
-         <div  className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+         <div onClick={()=>{setMapMarkers((prev)=>[{...prev[0],name:stock.name, ticker:stock.ticker, weather:stock.weather, risk:stock.tailriskchg}])}} className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
             <Image width="28px" height="28px" src={`/img/${stock.ticker}.png`} alt={`${stock.coinIcon}`}></Image>
             <span className="flex-1 ml-3 whitespace-nowrap">{stock.name}</span>
             <span className="flex-1 ml-3 whitespace-nowrap">{stock.tailriskchg}</span>
@@ -371,13 +371,55 @@ console.log(mapMarkers)
 
       {mapMarkers.map(({ name, coordinates,country, ticker,markerOffset,risk,weather }) => (
 
-        (<Marker key={coordinates} coordinates={coordinates} onMouseOver={()=>setContent({name:name, risk:risk, ticker:ticker, weather:weather})} onMouseLeave={()=>{setContent("")}} >
+        (<Marker key={coordinates} coordinates={coordinates}  >
+         {mapMarkers.length>=2  
+         ? <svg viewBox="130 -0 800 800" >
+            <foreignObject  width="200" height="150">
+              <div className={`w-full container-line flex text-[5px] opacity-80 justify-between`}>
+               <p className={`text-[5px]`}>{name}</p>
+               <p className={`ml-5`}>{risk}</p>
+               <div className={`ml-5`}>
+              <Image  width="28px" height="28px" src={`/img/${weather}.svg`} alt={`${weather}`}></Image>
+              </div>
+               </div> 
+               {/* <WeatherCard key={ticker} name={name} weather={weather} ticker={ticker} coinIcon={ticker} figure={risk}></WeatherCard> */}
          
+            </foreignObject>
+         </svg>
+         : 
+         <svg viewBox="130 -0 800 800">
+         <foreignObject  width="250" height="500">
+          <div className={`w-full container-line flex text-[5px] opacity-80 justify-between`}>
+          <div className={`container-gray flex flex-col link`} onClick={()=>{router.push({pathname:`/detail/`, query:{asset:ticker}})}}>
+        <div className={`icon-img flex flex-1 justify-center`}>
+          <Image width="120px" height="120px" src={`/img/${weather}.svg`} alt={`${weather}`}></Image>
+        </div>
+        <div className={`flex basis-24 items-center justify-between bg-white p-5 rounded-b-lg`}>
+          <div className={`flex items-center`}>
+            <div className={`w-12 h-12 bg-gray-100 rounded-full `}>
+              <Image width="48px" height="48px" src={`/img/${ticker}.png`} alt={`${ticker}`}></Image>
+            </div>
+            <div className={`ml-3`}>
+              {name.length<13 ? <h4 className={`text-card max-[1280px]:text-card`}>{name}</h4>
+              :  <p className={`text-card max-[1280px]:text-card  max-[1835px]:text-sm`}>{name}</p>}
+              <p className={`text-7`}>{ticker}</p>
+            </div>
+          </div>
+          <div>
+            <p className={(risk > 0 ? `text-green max-[1280px]:text-8 ` : `text-red max-[1280px]:text-9 `) }>{risk}%</p>
+          </div>
+        </div>
+    </div>
+           </div> 
+     
+        </foreignObject>
+        </svg>
+         }
           <circle r={2} fill="#F00" stroke="#fff" strokeWidth={1} />
-            <text className={` text-xs opacity-80`}>{risk}</text>
+           
             {/* <Vercel/> */}
             {/* <rect width="100" height="100" className={"bg-white opacity-10"}> <text>{risk}</text></rect> */}
-            {weather=="rainy" ? <Rainy1></Rainy1> : ''}
+            {/* {weather=="rainy" ? <Rainy1></Rainy1> : ''}
               {weather=="freezy" ? <Freezy1></Freezy1> : ''}
               {weather=="thunderstorm" ? <ThunderStorm1></ThunderStorm1> : ''}
               {weather=="mostly_cloud" ? <MostlyCloud1></MostlyCloud1> : ''}
@@ -393,7 +435,7 @@ console.log(mapMarkers)
               {weather=="windy" ? <Windy1></Windy1> : ''}
               {weather=="humid" ? <Humid1></Humid1> : ''}
               {weather=="snowy" ? <Snowy1></Snowy1> : ''}
-              {weather=="volcano" ? <Volcano1></Volcano1> : ''}
+              {weather=="volcano" ? <Volcano1></Volcano1> : ''} */}
         </Marker>)
         
       ))}
@@ -401,7 +443,7 @@ console.log(mapMarkers)
         </ComposableMap>
     
         </div>
-        {isMounted && content && 
+        {/* {isMounted && content && 
         <ReactTooltip effect="float" place="right" borderColor="green" background="white" type="light">
          <div className={`w-64 my-2 text-6 z-40`}>
             <ul>
@@ -419,9 +461,8 @@ console.log(mapMarkers)
           </div>
          <div className={`w-64 my-2 text-6`}>
 
-         {/* {filteredIndexData.map((card)=><WeatherCard key={card.ticker} name={card.name} weather={card.weather} ticker={card.ticker} coinIcon={card.ticker} figure={card.tailriskchg}></WeatherCard>)} */}
          </div>
-         </ReactTooltip>}
+         </ReactTooltip>} */}
         </div>
     )
 }
